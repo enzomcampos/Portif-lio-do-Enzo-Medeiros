@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enzo Medeiros | Portfólio</title>
+    
+    <meta name="description" content="Portfólio de Enzo Medeiros, Graduando em Ciência da Computação com foco em Dados e Segurança da Informação.">
+    <meta property="og:title" content="Enzo Medeiros | Portfólio">
+    <meta property="og:description" content="Graduando em Ciência da Computação com foco em Dados e Segurança da Informação.">
+    <meta property="og:type" content="website">
+
+    <!-- Envie sua foto para o repositório do GitHub, na mesma pasta do index.html, e coloque aqui o nome exato do arquivo (exemplo: foto.jpg ou foto.png). Também funciona com um link de imagem. -->
+    <script>
+        const foto = "foto.jpg"; 
+    </script>
+
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Lora', 'serif'],
+                    },
+                    colors: {
+                        fundo: 'var(--cor-fundo)',
+                        superficie: 'var(--cor-superficie)',
+                        texto: 'var(--cor-texto)',
+                        textosuave: 'var(--cor-texto-suave)',
+                        destaque: 'var(--cor-destaque)',
+                        borda: 'var(--cor-borda)',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Ícones Phosphor -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        /* Troque as cores do site aqui */
+        :root {
+            /* Tema Claro */
+            --cor-fundo-claro: #F4F5F4;
+            --cor-superficie-claro: #FFFFFF;
+            --cor-texto-claro: #1A1C1A;
+            --cor-texto-suave-claro: #5C5E5C;
+            --cor-destaque-claro: #7A7A55; /* Verde musgo mais escuro para contraste */
+            --cor-borda-claro: #E2E4E2;
+
+            /* Tema Escuro (Padrão) */
+            --cor-fundo-escuro: #121412;
+            --cor-superficie-escuro: #1A1C1A;
+            --cor-texto-escuro: #E4E6E4;
+            --cor-texto-suave-escuro: #A0A2A0;
+            --cor-destaque-escuro: #A6A678; /* Verde musgo */
+            --cor-borda-escuro: #2D2F2D;
+        }
+
+        .dark {
+            --cor-fundo: var(--cor-fundo-escuro);
+            --cor-superficie: var(--cor-superficie-escuro);
+            --cor-texto: var(--cor-texto-escuro);
+            --cor-texto-suave: var(--cor-texto-suave-escuro);
+            --cor-destaque: var(--cor-destaque-escuro);
+            --cor-borda: var(--cor-borda-escuro);
+        }
+
+        :root:not(.dark) {
+            --cor-fundo: var(--cor-fundo-claro);
+            --cor-superficie: var(--cor-superficie-claro);
+            --cor-texto: var(--cor-texto-claro);
+            --cor-texto-suave: var(--cor-texto-suave-claro);
+            --cor-destaque: var(--cor-destaque-claro);
+            --cor-borda: var(--cor-borda-claro);
+        }
+
+        body {
+            background-color: var(--cor-fundo);
+            background-image: linear-gradient(to bottom right, var(--cor-fundo), var(--cor-superficie));
+            color: var(--cor-texto);
+            font-family: 'Lora', serif;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            .animate-on-scroll {
+                transition: none !important;
+                transform: none !important;
+                opacity: 1 !important;
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--cor-fundo);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--cor-borda);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--cor-texto-suave);
+        }
+    </style>
+</head>
+<body class="selection:bg-destaque selection:text-fundo">
+
+    <!-- Header / Nav -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-fundo/80 backdrop-blur-md border-b border-borda transition-colors">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="text-xl font-semibold tracking-wide text-texto hover:text-destaque transition-colors">
+                EM.
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#sobre" class="text-textosuave hover:text-destaque transition-colors">Sobre</a>
+                <a href="#projetos" class="text-textosuave hover:text-destaque transition-colors">Projetos</a>
+                <a href="#experiencia" class="text-textosuave hover:text-destaque transition-colors">Experiência</a>
+                <a href="#formacao" class="text-textosuave hover:text-destaque transition-colors">Formação</a>
+                <a href="#contato" class="text-textosuave hover:text-destaque transition-colors">Contato</a>
+                
+                <button id="theme-toggle" class="p-2 text-textosuave hover:text-destaque transition-colors rounded-full focus:outline-none focus:ring-2 focus:ring-destaque" aria-label="Alternar tema">
+                    <i class="ph ph-moon text-xl block dark:hidden"></i>
+                    <i class="ph ph-sun text-xl hidden dark:block"></i>
+                </button>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center gap-4">
+                <button id="theme-toggle-mobile" class="p-2 text-textosuave hover:text-destaque transition-colors rounded-full focus:outline-none" aria-label="Alternar tema">
+                    <i class="ph ph-moon text-xl block dark:hidden"></i>
+                    <i class="ph ph-sun text-xl hidden dark:block"></i>
+                </button>
+                <button id="mobile-menu-btn" class="text-texto p-2 focus:outline-none" aria-label="Abrir menu">
+                    <i class="ph ph-list text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-superficie border-b border-borda absolute w-full left-0 top-20 flex-col py-4 px-6 gap-4 shadow-lg">
+            <a href="#sobre" class="mobile-link text-texto block py-2">Sobre</a>
+            <a href="#projetos" class="mobile-link text-texto block py-2">Projetos</a>
+            <a href="#experiencia" class="mobile-link text-texto block py-2">Experiência</a>
+            <a href="#formacao" class="mobile-link text-texto block py-2">Formação</a>
+            <a href="#contato" class="mobile-link text-texto block py-2">Contato</a>
+        </div>
+    </header>
+
+    <main class="pt-32 pb-20 px-6 max-w-6xl mx-auto space-y-32">
+        
+        <!-- Seção Inicial -->
+        <section id="inicio" class="min-h-[70vh] flex flex-col justify-center animate-on-scroll">
+            <div class="flex flex-col-reverse md:flex-row gap-12 items-start md:items-center justify-between">
+                
+                <div class="max-w-2xl">
+                    <p class="text-destaque font-medium mb-4 tracking-wider text-sm uppercase">Olá,</p>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold text-texto leading-tight mb-4">
+                        Enzo Medeiros
+                    </h1>
+                    <h2 class="text-xl md:text-2xl text-textosuave mb-6">
+                        Graduando em Ciência da Computação | Foco em Dados e Segurança da Informação
+                    </h2>
+                    <p class="text-lg text-textosuave mb-10 max-w-xl">
+                        Buscando oportunidade de emprego em órgão público ou ingresso em mestrado, com foco em pesquisa e inovação tecnológica.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4 mb-10">
+                        <a href="#projetos" class="px-6 py-3 bg-destaque text-fundo font-medium rounded-xl hover:bg-opacity-90 transition-colors focus:ring-2 focus:ring-destaque focus:ring-offset-2 focus:ring-offset-fundo">
+                            Ver projetos
+                        </a>
+                        <a href="#contato" class="px-6 py-3 border border-borda text-texto rounded-xl hover:border-destaque hover:text-destaque transition-colors focus:ring-2 focus:ring-destaque focus:ring-offset-2 focus:ring-offset-fundo">
+                            Entrar em contato
+                        </a>
+                    </div>
+
+                    <div class="flex gap-5">
+                        <a href="https://www.linkedin.com/in/enzo-medeiros-ti" target="_blank" rel="noopener noreferrer" class="text-textosuave hover:text-destaque transition-colors p-2 -ml-2 rounded-lg focus:ring-2 focus:ring-destaque" aria-label="LinkedIn">
+                            <i class="ph ph-linkedin-logo text-3xl"></i>
+                        </a>
+                        <a href="https://github.com/enzomcampos" target="_blank" rel="noopener noreferrer" class="text-textosuave hover:text-destaque transition-colors p-2 rounded-lg focus:ring-2 focus:ring-destaque" aria-label="GitHub">
+                            <i class="ph ph-github-logo text-3xl"></i>
+                        </a>
+                        <a href="https://lattes.cnpq.br/8204691243843181" target="_blank" rel="noopener noreferrer" class="text-textosuave hover:text-destaque transition-colors p-2 rounded-lg focus:ring-2 focus:ring-destaque" aria-label="Currículo Lattes">
+                            <i class="ph ph-student text-3xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="relative w-48 h-48 md:w-64 md:h-64 shrink-0">
+                    <img id="profile-img" src="" alt="Foto de Enzo Medeiros" class="w-full h-full object-cover rounded-2xl border border-borda shadow-lg hidden">
+                    <div id="profile-fallback" class="w-full h-full bg-superficie border border-borda rounded-2xl shadow-lg hidden items-center justify-center">
+                        <span class="text-5xl md:text-6xl text-destaque font-medium">EM</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre Mim -->
+        <section id="sobre" class="animate-on-scroll scroll-mt-32">
+            <h3 class="text-2xl font-semibold text-texto mb-8 border-b border-borda pb-2 inline-block">Sobre</h3>
+            <div class="text-lg text-textosuave max-w-3xl leading-relaxed">
+                <p>
+                    Escolhi a Ciência da Computação atraído pela diversidade de carreiras, e hoje meu foco é trabalhar com a interoperabilidade de sistemas do governo. Sou amigável, esforçado e persistente; tenho facilidade para me conectar com as pessoas e buscar os objetivos que almejo. No meu tempo livre, gosto de ir ao cinema, jogar tênis e tricotar.
+                </p>
+            </div>
+        </section>
+
+        <!-- Habilidades -->
+        <section id="habilidades" class="animate-on-scroll scroll-mt-32">
+            <h3 class="text-2xl font-semibold text-texto mb-8 border-b border-borda pb-2 inline-block">Habilidades</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
+                
+                <!-- Técnicas -->
+                <div class="bg-superficie border border-borda rounded-2xl p-8">
+                    <h4 class="text-xl text-texto font-medium mb-6 flex items-center gap-3">
+                        <i class="ph ph-terminal-window text-destaque text-2xl"></i>
+                        Técnicas
+                    </h4>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between items-center border-b border-borda/50 pb-2">
+                            <span class="text-texto">Lógica de programação (Algoritmos)</span>
+                            <span class="text-sm text-textosuave bg-fundo px-3 py-1 rounded-full border border-borda">Básico</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b border-borda/50 pb-2">
+                            <span class="text-texto">Pesquisa acadêmica em bases de dados</span>
+                            <span class="text-sm text-textosuave bg-fundo px-3 py-1 rounded-full border border-borda">Intermediário</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b border-borda/50 pb-2">
+                            <span class="text-texto">Ferramentas Google Workspace</span>
+                            <span class="text-sm text-textosuave bg-fundo px-3 py-1 rounded-full border border-borda">Intermediário</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b border-borda/50 pb-2">
+                            <span class="text-texto">LaTeX</span>
+                            <span class="text-sm text-textosuave bg-fundo px-3 py-1 rounded-full border border-borda">Básico</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Comportamentais -->
+                <div class="bg-superficie border border-borda rounded-2xl p-8">
+                    <h4 class="text-xl text-texto font-medium mb-6 flex items-center gap-3">
+                        <i class="ph ph-users text-destaque text-2xl"></i>
+                        Comportamentais
+                    </h4>
+                    <ul class="space-y-6">
+                        <li>
+                            <div class="text-texto mb-1 font-medium">Relacionamento Interpessoal</div>
+                            <div class="text-textosuave text-sm">Facilidade para fazer amizades, dialogar com diferentes opiniões e atuar em equipe.</div>
+                        </li>
+                        <li>
+                            <div class="text-texto mb-1 font-medium">Persistência</div>
+                            <div class="text-textosuave text-sm">Foco investigativo para descobrir e atuar em áreas estratégicas, como sistemas governamentais, sem desistir perante os desafios.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projetos -->
+        <section id="projetos" class="animate-on-scroll scroll-mt-32">
+            <h3 class="text-2xl font-semibold text-texto mb-8 border-b border-borda pb-2 inline-block">Projetos</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Projeto 1 -->
+                <div class="bg-superficie border border-borda rounded-2xl p-8 flex flex-col h-full hover:-translate-y-1 transition-transform duration-300">
+                    <div class="mb-4">
+                        <h4 class="text-xl font-medium text-texto mb-2">Iniciação Científica - Interoperabilidade no SES-MT</h4>
+                        <p class="text-textosuave mb-6">
+                            Pesquiso os fatores de sucesso na integração dos sistemas de saúde estaduais. Realizei o levantamento bibliográfico usando ACM, Google Acadêmico e IAs, publiquei um artigo no ERI MT e preparo um estudo de caso com o órgão.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-auto">
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 text-xs text-textosuave border border-borda rounded-md">Pesquisa Acadêmica</span>
+                            <span class="Interoperabilidade px-3 py-1 text-xs text-textosuave border border-borda rounded-md">Interoperabilidade</span>
+                            <span class="px-3 py-1 text-xs text-textosuave border border-borda rounded-md">SES-MT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 2 -->
+                <div class="bg-superficie border border-borda rounded-2xl p-8 flex flex-col h-full hover:-translate-y-1 transition-transform duration-300">
+                    <div class="mb-4">
+                        <h4 class="text-xl font-medium text-texto mb-2">SISP - Sistema Integrado Militar</h4>
+                        <p class="text-textosuave mb-6">
+                            Projeto acadêmico focado no problema da falta de integração de dados entre sistemas usados por militares. Estruturei o escopo, as regras de negócio e os diagramas de classe para planejar a arquitetura da base de dados.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-auto">
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 text-xs text-textosuave border border-borda rounded-md">Arquitetura de Dados</span>
+                            <span class="px-3 py-1 text-xs text-textosuave border border-borda rounded-md">UML</span>
+                            <span class="px-3 py-1 text-xs text-textosuave border border-borda rounded-md">Regras de Negócio</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Experiência -->
+        <section id="experiencia" class="animate-on-scroll scroll-mt-32">
+            <h3 class="text-2xl font-semibold text-texto mb-8 border-b border-borda pb-2 inline-block">Experiência e Atividades</h3>
+            
+            <div class="relative border-l border-borda ml-4 pl-8 py-2">
+                <!-- Ponto na linha do tempo -->
+                <div class="absolute w-3 h-3 bg-destaque rounded-full -left-[1.5px] top-4 -translate-x-1/2"></div>
+                
+                <h4 class="text-lg font-medium text-texto">Projeto Pauta Viva e Coral</h4>
+                <p class="text-sm text-destaque mb-3">Ensino Médio</p>
+                <p class="text-textosuave max-w-2xl">
+                    Participação nas atividades musicais extracurriculares da instituição, desenvolvendo habilidades de comunicação, expressão e trabalho em grupo.
+                </p>
+            </div>
+        </section>
+
+        <!-- Formação -->
+        <section id="formacao" class="animate-on-scroll scroll-mt-32">
+            <h3 class="text-2xl font-semibold text-texto mb-8 border-b border-borda pb-2 inline-block">Formação Complementar</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Ensino -->
+                <div>
+                    <h4 class="text-lg font-medium text-texto mb-4 flex items-center gap-2">
+                        <i class="ph ph-graduation-cap text-destaque text-xl"></i>
+                        Acadêmico
+                    </h4>
+                    <div class="bg-superficie border border-borda rounded-2xl p-6">
+                        <h5 class="text-texto font-medium">Ciência da Computação</h5>
+                        <p class="text-sm text-textosuave mb-2">Universidade Federal de Mato Grosso (UFMT)</p>
+                        <p class="text-sm text-textosuave border-t border-borda pt-2 mt-2">Semestre atual: 2º Semestre</p>
+                        <p class="text-sm text-textosuave">Previsão de formatura: Segundo semestre de 2030</p>
+                    </div>
+
+                    <h4 class="text-lg font-medium text-texto mt-8 mb-4 flex items-center gap-2">
+                        <i class="ph ph-translate text-destaque text-xl"></i>
+                        Idiomas
+                    </h4>
+                    <div class="bg-superficie border border-borda rounded-2xl p-6 space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-texto">Inglês</span>
+                            <span class="text-sm text-textosuave">Avançando</span>
+                        </div>
+                        <div class="flex justify-between items-center border-t border-borda pt-3">
+                            <span class="text-texto">Alemão</span>
+                            <span class="text-sm text-textosuave">Iniciante</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eventos -->
+                <div>
+                    <h4 class="text-lg font-medium text-texto mb-4 flex items-center gap-2">
+                        <i class="ph ph-ticket text-destaque text-xl"></i>
+                        Eventos e Participações
+                    </h4>
+                    <div class="bg-superficie border border-borda rounded-2xl p-6">
+                        <ul class="space-y-4">
+                            <li class="flex gap-3">
+                                <i class="ph ph-check-circle text-destaque mt-1 shrink-0"></i>
+                                <span class="text-textosuave">Apresentação de artigo no <strong class="text-texto font-normal">ERI MT 2026</strong>.</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <i class="ph ph-check-circle text-destaque mt-1 shrink-0"></i>
+                                <span class="text-textosuave">Participação na <strong class="text-texto font-normal">SEMATEC</strong>.</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <i class="ph ph-check-circle text-destaque mt-1 shrink-0"></i>
+                                <span class="text-textosuave">I Workshop de <strong class="text-texto font-normal">Serviços Públicos Digitais</strong> (UFMT).</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <i class="ph ph-check-circle text-destaque mt-1 shrink-0"></i>
+                                <span class="text-textosuave">VII Seminário <strong class="text-texto font-normal">DAVI - Dados Além da Vida</strong>.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contato -->
+        <section id="contato" class="animate-on-scroll scroll-mt-32 border-t border-borda pt-20 text-center">
+            <h3 class="text-3xl font-semibold text-texto mb-4">Vamos conversar?</h3>
+            <p class="text-textosuave max-w-xl mx-auto mb-8">
+                Estou aberto a oportunidades no setor público, iniciação científica ou mestrado. Sinta-se à vontade para me mandar um e-mail ou conectar-se comigo nas redes.
+            </p>
+            
+            <a href="mailto:enzomc1604@gmail.com" class="inline-flex items-center gap-2 px-8 py-4 bg-destaque text-fundo font-medium rounded-xl hover:bg-opacity-90 transition-colors focus:ring-2 focus:ring-destaque focus:ring-offset-2 focus:ring-offset-fundo mb-12">
+                <i class="ph ph-envelope-simple text-xl"></i>
+                enzomc1604@gmail.com
+            </a>
+
+            <div class="flex justify-center gap-6">
+                <a href="https://www.linkedin.com/in/enzo-medeiros-ti" target="_blank" rel="noopener noreferrer" class="text-textosuave hover:text-destaque transition-colors flex flex-col items-center gap-2" aria-label="LinkedIn">
+                    <i class="ph ph-linkedin-logo text-3xl"></i>
+                    <span class="text-sm">LinkedIn</span>
+                </a>
+                <a href="https://github.com/enzomcampos" target="_blank" rel="noopener noreferrer" class="text-textosuave hover:text-destaque transition-colors flex flex-col items-center gap-2" aria-label="GitHub">
+                    <i class="ph ph-github-logo text-3xl"></i>
+                    <span class="text-sm">GitHub</span>
+                </a>
+                <a href="https://lattes.cnpq.br/8204691243843181" target="_blank" rel="noopener noreferrer" class="text-textosuave hover:text-destaque transition-colors flex flex-col items-center gap-2" aria-label="Currículo Lattes">
+                    <i class="ph ph-student text-3xl"></i>
+                    <span class="text-sm">Lattes</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-borda py-8 text-center text-textosuave text-sm px-6">
+        <p>&copy; <span id="ano"></span> Enzo Medeiros. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Scripts de Interatividade -->
+    <script>
+        // Atualizar ano do rodapé
+        document.getElementById('ano').textContent = new Date().getFullYear();
+
+        // Lógica da Foto de Perfil
+        const imgElement = document.getElementById('profile-img');
+        const fallbackElement = document.getElementById('profile-fallback');
+
+        if (typeof foto !== 'undefined' && foto.trim() !== '') {
+            imgElement.src = foto;
+            imgElement.onload = () => {
+                imgElement.classList.remove('hidden');
+                fallbackElement.classList.add('hidden');
+            };
+            imgElement.onerror = () => {
+                imgElement.classList.add('hidden');
+                fallbackElement.classList.remove('hidden');
+                fallbackElement.classList.add('flex');
+            };
+        } else {
+            imgElement.classList.add('hidden');
+            fallbackElement.classList.remove('hidden');
+            fallbackElement.classList.add('flex');
+        }
+
+        // Lógica de Alternância de Tema
+        const themeToggleBtns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
+        const htmlElement = document.documentElement;
+
+        // Recupera a preferência salva
+        if (localStorage.theme === 'light') {
+            htmlElement.classList.remove('dark');
+        }
+
+        themeToggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                htmlElement.classList.toggle('dark');
+                if (htmlElement.classList.contains('dark')) {
+                    localStorage.theme = 'dark';
+                } else {
+                    localStorage.theme = 'light';
+                }
+            });
+        });
+
+        // Menu Mobile
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const icon = mobileBtn.querySelector('i');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('ph-x');
+                icon.classList.add('ph-list');
+            } else {
+                icon.classList.remove('ph-list');
+                icon.classList.add('ph-x');
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                icon.classList.remove('ph-x');
+                icon.classList.add('ph-list');
+            });
+        });
+
+        // Animação de Scroll (Intersection Observer)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Anima apenas uma vez
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach((elem) => {
+            observer.observe(elem);
+        });
+    </script>
+</body>
+</html>
